@@ -16,7 +16,7 @@ const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const puppeteer_service_1 = require("./puppeteer.service");
 /**
- * Controller that obtain custom code and do scrapind from web
+ * Controller that obtain custom code and do scraping from web
  */
 let PuppeteerController = 
 //@UseInterceptors(LoggingInterceptor) Ver pq no funciona
