@@ -43,6 +43,8 @@ let GitService = class GitService {
   */
     async getNavigation(url) {
         let crawlers = await this.crawlerRepository.find({ url: url });
+        if (crawlers.length != 1)
+            throw new Error(JSON.stringify({ 'error': 'Navigation Not Found', 'url': url }));
         let result = await this.httpService.get(crawlers[0].navigationUrl, { responseType: 'text', transformResponse: undefined });
         return (await (result.toPromise())).data;
     }
