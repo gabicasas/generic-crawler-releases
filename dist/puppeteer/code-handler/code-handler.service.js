@@ -28,6 +28,7 @@ let CodeHandlerService = class CodeHandlerService {
         this.postRepository = postRepository;
         this.marketHRepository = marketHRepository;
         this.gitService = gitService;
+        console.log("here");
     }
     async obtainFirstNavigation(url) {
         let data = await this.gitService.getNavigation(url);

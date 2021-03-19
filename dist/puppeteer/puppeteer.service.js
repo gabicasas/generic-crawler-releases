@@ -30,6 +30,9 @@ let PuppeteerService = class PuppeteerService {
                 executablePath: process.env.CHROMIUM_PATH,
                 args: ['--no-sandbox', '--remote-debugging-port=9222'],
             });
+            if (process.env.URL_TO_CRAW) {
+                this.executeCrawling(process.env.URL_TO_CRAW);
+            }
         })();
     }
     async executeCrawling(url) {
