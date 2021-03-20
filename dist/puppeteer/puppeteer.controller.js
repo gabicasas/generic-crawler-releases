@@ -39,6 +39,20 @@ class PuppeteerController {
             }, common_1.HttpStatus.FORBIDDEN);
         }
     }
+    async startEnv() {
+        this.logger.log("start crawling={}", process.env.URL_TO_CRAW);
+        try {
+            let result = await this.puppeteerService.executeCrawling(process.env.URL_TO_CRAW);
+            return result;
+        }
+        catch (e) {
+            this.logger.error("ERROR={}", e);
+            throw new common_1.HttpException({
+                status: common_1.HttpStatus.FORBIDDEN,
+                error: e.message,
+            }, common_1.HttpStatus.FORBIDDEN);
+        }
+    }
     async stop() {
         this.logger.log("stop crawling");
         try {
@@ -67,6 +81,19 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], PuppeteerController.prototype, "start", null);
+__decorate([
+    swagger_1.ApiOperation({ title: 'Execute the AJAX crawling in url specified in env URL_TO_CRAW' }),
+    swagger_1.ApiResponse({
+        status: 200,
+        description: 'undefined',
+        type: 'string',
+        isArray: true,
+    }),
+    common_1.Get('start/'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], PuppeteerController.prototype, "startEnv", null);
 __decorate([
     swagger_1.ApiOperation({ title: 'Stop the crawler' }),
     swagger_1.ApiResponse({
