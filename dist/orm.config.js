@@ -9,7 +9,7 @@ const commonConf = {
     },
     MIGRATIONS_RUN: true,
 };
-let ormconfig = {
+/*let ormconfig: TypeOrmModuleOptions = {
     name: 'default',
     type: 'sqlite',
     database: '../target/db/sqlite-dev-db.sql',
@@ -19,8 +19,7 @@ let ormconfig = {
     migrations: commonConf.MIGRATIONS,
     cli: commonConf.CLI,
     migrationsRun: commonConf.MIGRATIONS_RUN,
-};
-exports.ormconfig = ormconfig;
+};*/
 let ormconfigMongo = {
     name: 'mongo',
     type: "mongodb",
@@ -32,7 +31,7 @@ let ormconfigMongo = {
 };
 exports.ormconfigMongo = ormconfigMongo;
 if (process.env.NODE_ENV === 'prod') {
-    exports.ormconfig = ormconfig = {
+    /*ormconfig = {
         name: 'default',
         type: 'mysql',
         database: 'process.env.MYSQL_DATABASE',
@@ -43,20 +42,20 @@ if (process.env.NODE_ENV === 'prod') {
         migrations: commonConf.MIGRATIONS,
         cli: commonConf.CLI,
         migrationsRun: commonConf.MIGRATIONS_RUN,
-    };
+    };*/
 }
 if (process.env.NODE_ENV === 'test') {
-    exports.ormconfig = ormconfig = {
-        name: 'default',
-        type: 'sqlite',
-        database: ':memory:',
-        keepConnectionAlive: true,
-        logging: true,
-        synchronize: true,
-        entities: commonConf.ENTITIES,
-        migrations: commonConf.MIGRATIONS,
-        cli: commonConf.CLI,
-        migrationsRun: commonConf.MIGRATIONS_RUN,
-    };
+    /*ormconfig = {
+            name: 'default',
+            type: 'sqlite',
+            database: ':memory:',
+            keepConnectionAlive: true,
+            logging: true,
+            synchronize: true,
+            entities: commonConf.ENTITIES,
+            migrations: commonConf.MIGRATIONS,
+            cli: commonConf.CLI,
+            migrationsRun: commonConf.MIGRATIONS_RUN,
+        };*/
 }
 //# sourceMappingURL=orm.config.js.map

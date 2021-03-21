@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const auth_module_1 = require("./module/auth.module");
 const orm_config_1 = require("./orm.config");
 const puppeteer_module_1 = require("./puppeteer/puppeteer.module");
 // jhipster-needle-add-entity-module-to-main-import - JHipster will import entity modules here, do not remove
@@ -19,9 +18,9 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     common_1.Module({
         imports: [
-            typeorm_1.TypeOrmModule.forRoot(orm_config_1.ormconfig),
+            // TypeOrmModule.forRoot(ormconfig),
             typeorm_1.TypeOrmModule.forRoot(orm_config_1.ormconfigMongo),
-            auth_module_1.AuthModule,
+            //AuthModule,
             puppeteer_module_1.PuppeteerModule,
         ],
         controllers: [

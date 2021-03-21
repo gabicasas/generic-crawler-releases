@@ -16,8 +16,6 @@ const code_handler_service_1 = require("./code-handler/code-handler.service");
 const typeorm_1 = require("@nestjs/typeorm");
 //Cuidado en las importaciones que no ponga src
 const Category_schema_1 = require("../schemas/Category.schema");
-const post_repository_1 = require("../repository/post.repository");
-const authority_repository_1 = require("../repository/authority.repository");
 const MarketHistory_schema_1 = require("../schemas/MarketHistory.schema");
 const git_service_1 = require("./git/git.service");
 const Crawler_schema_1 = require("../schemas/Crawler.schema");
@@ -28,8 +26,8 @@ let PuppeteerModule = class PuppeteerModule {
 };
 PuppeteerModule = __decorate([
     common_1.Module({
-        imports: [common_1.HttpModule, typeorm_1.TypeOrmModule.forFeature([Crawler_schema_1.Crawler, Category_schema_1.Category, post_repository_1.PostRepository, MarketHistory_schema_1.MarketHistory], 'mongo'),
-            typeorm_1.TypeOrmModule.forFeature([authority_repository_1.AuthorityRepository])],
+        imports: [common_1.HttpModule,
+            typeorm_1.TypeOrmModule.forFeature([Crawler_schema_1.Crawler, Category_schema_1.Category, MarketHistory_schema_1.MarketHistory], 'mongo')],
         providers: [puppeteer_service_1.PuppeteerService, code_handler_service_1.CodeHandlerService, git_service_1.GitService],
         controllers: [puppeteer_controller_1.PuppeteerController]
     }),
